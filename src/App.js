@@ -1,16 +1,19 @@
 import React from 'react';
 import './App.css';
 import TopNavigation from './components/navBar/TopNavigation';
-import {Route} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 import LandingPage from './components/pages/LandingPage';
 import GamePage from './components/pages/GamePage';
 
-const App =({location}) => {
-   return (
+const App = () => {
+    return (
         <div className="ui container">
-          <TopNavigation />
-            <Route location={location} path="/" exact component={LandingPage} />
-            <Route location={location} path="/game" exact component={GamePage} />
+            <TopNavigation/>
+            <Switch>
+                <Route path="/game" exact component={GamePage}/>
+                <Route path="/" exact component={LandingPage}/>
+            </Switch>
+
         </div>
     );
 }

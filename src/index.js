@@ -5,7 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 import {playersSaved, GameHistorySaved} from './actions/index';
 import createStoreWithMiddleware from './store/index';
 
@@ -23,7 +23,7 @@ if(localStorage.players){
 ReactDOM.render(
     <Provider store={storeWithMiddleware}>
         <BrowserRouter>
-                    <Route component={App} />
+                    <App />
         </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
