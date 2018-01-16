@@ -5,7 +5,7 @@ import PaperImage from '../../images/paper.jpg';
 import ScissorsImage from '../../images/scissors.jpg';
 import SpockImage from '../../images/spock.jpg';
 import LizardImage from '../../images/lizard.jpg';
-
+import PropTypes from 'prop-types';
 
 class Choice extends React.Component {
 
@@ -26,10 +26,6 @@ class Choice extends React.Component {
                             Rock
                         </Button.Content>
                     </Button>
-
-
-
-
                 </Grid.Column>
                 <Grid.Column className="formatedButton">
                     <Button color="yellow" animated='fade' onClick={()=>this.pickAChoice("Paper")} >
@@ -80,6 +76,8 @@ class Choice extends React.Component {
     }
 
 }
-
+Choice.propTypes={
+    pick:PropTypes.func.isRequired
+}
 
 export default Choice;

@@ -1,10 +1,8 @@
 import {PLAYERS_SAVED, GAME_HISTORY_SAVED, SCOREDBOARD_RESETTED} from './constants';
 
 export const savePlayersToLocal = (data) => {
-    //console.log('Save palyers...', data);
     var players = JSON.parse(localStorage.getItem('players'));
     players.names = (data);
-    //console.log('Save str...', players);
     localStorage.setItem('players', JSON.stringify(players));
     return new Promise((resolve, reject) => {
         resolve(data);
@@ -31,7 +29,6 @@ export function initSetting() {
 
 
 export const saveGameHistoryToLocal = (data) => {
-    //console.log('Save gamesHistory...', data);
     let gamesHistory = JSON.parse(localStorage.getItem('gamesHistory'));
     let tmpGames = gamesHistory.games;
     let find = true;
@@ -45,14 +42,12 @@ export const saveGameHistoryToLocal = (data) => {
     if (find) {
         tmpGames.push(data);
         gamesHistory.games = tmpGames;
-        //console.log('new Save str...', gamesHistory);
         localStorage.setItem('gamesHistory', JSON.stringify(gamesHistory));
         return new Promise((resolve, reject) => {
             resolve(tmpGames);
         });
     }else{
         gamesHistory.games = tmpGames;
-        //console.log('has Save str...', gamesHistory);
         localStorage.setItem('gamesHistory', JSON.stringify(gamesHistory));
         return new Promise((resolve, reject) => {
             resolve(tmpGames);

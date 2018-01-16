@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Image, Card, Button, Icon, Label, Message} from 'semantic-ui-react'
+import {Grid, Card, Button, Icon, Label} from 'semantic-ui-react'
 import AEUrl from '../../images/AE.png';
 import DogUrl from '../../images/dog.png';
 import FlashUrl from '../../images/flash.png';
@@ -8,8 +8,6 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import ChoiceSection from '../choice/Choice';
 import AiChoice from '../choice/AiChoice';
-import RockImage from '../../images/rock.jpg';
-import PaperImage from '../../images/paper.jpg';
 import {PlayGame} from '../../utils/gameRules';
 import {saveGameHistory, resetScoreboard} from '../../actions/index';
 import GameHistoryTable from '../tables/GameHistoryTable';
@@ -32,7 +30,6 @@ class GamePage extends React.Component {
         AiChoice: "",
         currentGame: {},
         message: "Let's play...",
-        //allGames:JSON.parse(localStorage.getItem('gamesHistory')).games
         allGames: JSON.parse(localStorage.getItem('gamesHistory')).games
     }
 
@@ -183,7 +180,6 @@ class GamePage extends React.Component {
 
     render() {
         const {data, gamesHistory, currentGame, message, allGames} = this.state;
-        console.log('render: ', this.state);
         return (
             <Grid celled='internally' columns='equal'>
                 <Grid.Row>
@@ -200,7 +196,7 @@ class GamePage extends React.Component {
 
                         <Grid columns='equal'>
                             <Grid.Row>
-                                <Grid.Column textAlign="center" width={6} >
+                                <Grid.Column textAlign="center" width={6}>
                                     <ResultMessage message={message}/>
                                 </Grid.Column>
                                 <Grid.Column textAlign="center" width={10}>
@@ -267,5 +263,12 @@ const mapStateToProps = (state) => ({
     players: state.currentUsers,
     allGames: state.games
 });
+
+GamePage.propTypes = {
+    saveGameHistory: PropTypes.func.isRequired,
+    resetScoreboard: PropTypes.func.isRequired,
+    players: PropTypes.object.isRequired,
+    allGames: PropTypes.array.isRequired
+};
 
 export default connect(mapStateToProps, {saveGameHistory, resetScoreboard})(GamePage);

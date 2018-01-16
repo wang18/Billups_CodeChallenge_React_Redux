@@ -5,7 +5,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import 'semantic-ui-css/semantic.min.css';
 import { Provider } from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import {playersSaved, GameHistorySaved} from './actions/index';
 import createStoreWithMiddleware from './store/index';
 

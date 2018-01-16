@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form, Button, Grid, Menu, Checkbox, Label, Card, Divider, Image, Segment, Icon} from 'semantic-ui-react';
+import {Form, Button, Grid, Menu, Label, Image, Segment, Icon} from 'semantic-ui-react';
 import InlineError from "../messages/InlineError";
 import PropType from 'prop-types';
 import AEUrl from '../../images/AE.png';
@@ -18,7 +18,6 @@ class PlayerSettingForm extends React.Component {
     };
 
     onChange = (e) => {
-        console.log(e.target.value);
         this.setState({
             data: {
                 ...this.state.data,
@@ -31,7 +30,6 @@ class PlayerSettingForm extends React.Component {
         e.preventDefault();
         const errors = this.validate(this.state.data);
         this.setState({errors});
-        console.log('what? ', this.state.data);
         if (Object.keys(errors).length === 0) {
             this.setState({loading: true});
             this.props
@@ -60,9 +58,9 @@ class PlayerSettingForm extends React.Component {
 
     render() {
         const {data, errors, loading, activeItem} = this.state;
-        const leftPartStyle={'background-color':"#ffe3fb"};
-        const midPartStyle={'background-color':"#eae7ff"};
-        const rightPartStyle={'background-color':"#fbfdef"};
+        const leftPartStyle={'backgroundColor':"#ffe3fb"};
+        const midPartStyle={'backgroundColor':"#eae7ff"};
+        const rightPartStyle={'backgroundColor':"#fbfdef"};
         return (
             <Form onSubmit={this.onSubmit} loading={loading}>
                 <Grid columns='equal'>
@@ -84,18 +82,15 @@ class PlayerSettingForm extends React.Component {
                         <Grid.Column width={4} style={midPartStyle} >
                             <Segment color="blue" textAlign='center'>
                                 <Icon name="spy" size="huge" />
-                                {data.pName}
+                                { data.pName && (<Label size="large" color='blue' tag>{data.pName}</Label>)}
                             </Segment>
                             <Segment color="green" textAlign='center'>
                                 V.S.
                             </Segment>
                             <Segment color="red" textAlign='center'>
                                 <Icon name="users" size="huge" />
-
-                                {data.AiName}
+                                {data.AiName && (<Label size="large" color='red' tag>{data.AiName}</Label>)}
                             </Segment>
-
-
                             {errors.AiName && <InlineError text={errors.AiName}/>}
                         </Grid.Column>
                         <Grid.Column width={7} style={rightPartStyle}>

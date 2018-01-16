@@ -2,9 +2,8 @@ import React from 'react';
 import PlayerSettingForm from '../forms/PlayerSettingForm';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import {initSetting, savePlayers} from '../../actions/index';
-import {Form, Button, Grid, List, Checkbox, Label, Card, Divider, Image, Segment, Icon} from 'semantic-ui-react';
+import {Grid, List} from 'semantic-ui-react';
 
 class LandingPage extends React.Component{
 
@@ -21,7 +20,7 @@ class LandingPage extends React.Component{
 
 
     render(){
-        const divBkColor={'background-color':"#dff0ff", 'padding':'10px 10px'};
+        const divBkColor={'backgroundColor':"#dff0ff", 'padding':'10px 10px'};
 
         return(
             <div style={divBkColor}>
@@ -57,5 +56,9 @@ class LandingPage extends React.Component{
         );
     }
 }
+
+LandingPage.propTypes={
+    savePlayers:PropTypes.func.isRequired
+};
 
 export default connect(null, {savePlayers})(LandingPage);

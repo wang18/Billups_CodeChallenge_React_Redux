@@ -1,6 +1,6 @@
 import React from 'react';
-import PropType from 'prop-types';
-import {Message, Icon, Feed, Label} from 'semantic-ui-react'
+import PropTypes from 'prop-types';
+import {Message, Icon, Label} from 'semantic-ui-react'
 
 class ResultPlayers extends React.Component {
     constructor(props) {
@@ -39,7 +39,6 @@ class ResultPlayers extends React.Component {
             default :
                 return 'teal';
         }
-        ;
     };
 
     findToolIcon = (opt) => {
@@ -58,8 +57,7 @@ class ResultPlayers extends React.Component {
             default :
                 return tools[5];
         }
-        ;
-    }
+    };
 
     createMessage = (myOpt, aiOpt, pName, AiName, MyImage, AiImage, color) => {
         const myOptMsg = this.findToolIcon(myOpt);
@@ -67,7 +65,7 @@ class ResultPlayers extends React.Component {
         const finalMsg = (
             <div >
                 <Label image color={color}>
-                    <img src={MyImage}/>
+                    <img alt="myImg" src={MyImage}/>
                     {pName}
                 </Label>
                 <Icon name="arrow right"/>
@@ -76,14 +74,13 @@ class ResultPlayers extends React.Component {
                 <Icon size='big' name={aiOptMsg}/>
                 <Icon name="arrow left"/>
                 <Label image color={color}>
-                    <img src={AiImage}/>
+                    <img alt="aiImg" src={AiImage}/>
                     {AiName}
                 </Label>
             </div>
 
 
         );
-        //return <Message color={color}> {myOpt}{pName}<Icon name="trophy"/>{AiName}{aiOpt}</Message>;
         return finalMsg;
     };
 
@@ -92,12 +89,21 @@ class ResultPlayers extends React.Component {
         const color = this.chooseColor(message);
         const currentMsg = this.createMessage(myOpt, aiOpt, pName, AiName, MyImage, AiImage, color);
         return (
-            <Message textAlign="center" color={color}>
+            <Message  color={color}>
                 {currentMsg}
             </Message>
         );
     }
 }
 
+ResultPlayers.propTypes={
+    message: PropTypes.string.isRequired,
+    myOpt: PropTypes.string,
+    aiOpt: PropTypes.string,
+    pName: PropTypes.string.isRequired,
+    AiName: PropTypes.string.isRequired,
+    MyImage: PropTypes.string.isRequired,
+    AiImage: PropTypes.string.isRequired
+}
 
 export default ResultPlayers;

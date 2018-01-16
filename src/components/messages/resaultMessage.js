@@ -46,5 +46,9 @@ class ResultMessage extends React.Component {
     }
 }
 
+ResultMessage.propTypes ={
+    message: PropType.string.isRequired
+}
+
 
 export default ResultMessage;
